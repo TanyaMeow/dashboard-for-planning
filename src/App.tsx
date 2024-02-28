@@ -9,8 +9,10 @@ function App() {
   return (
     <div className="App">
         <Navigation />
-        <Header />
-        <SettingBoard />
+        <div className='content_block'>
+            <Header />
+            <SettingBoard />
+        </div>
     </div>
   );
 }
