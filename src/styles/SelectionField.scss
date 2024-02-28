@@ -1,0 +1,41 @@
+.selection_board-block {
+  padding: 0 27px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: white;
+}
+
+.selection_navigation {
+  display: flex;
+
+  a.active {
+    border-bottom: 2px solid #6E6AF0;
+  }
+}
+
+.select_nav {
+  display: flex;
+  align-items: center;
+
+  margin-left: 37px;
+
+  height: 36px;
+
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.select_nav:first-child {
+  margin-left: 0;
+}
+
+.settings {
+  img {
+    margin-left: 15px;
+  }
+}

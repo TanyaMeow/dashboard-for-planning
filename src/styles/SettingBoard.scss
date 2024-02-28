@@ -1,9 +1,12 @@
 .boards_block {
+  margin-top: 2px;
   padding: 27px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  background-color: white;
 }
 .progress_bar {
   display: flex;

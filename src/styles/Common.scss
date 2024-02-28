@@ -1,6 +1,7 @@
 @import "Header";
 @import "Navigation";
 @import "SettingBoard";
+@import "SelectionField";
 @import "UserTable";
 
 * {
@@ -13,6 +14,7 @@ html, body, #root, .App {
 
 body {
   margin: 0 auto;
+  background-color: #f7f7f7;
 }
 
 .App {
