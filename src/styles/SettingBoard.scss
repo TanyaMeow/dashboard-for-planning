@@ -1,0 +1,62 @@
+.boards_block {
+  padding: 27px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.progress_bar {
+  display: flex;
+  align-items: center;
+  width: 26em;
+
+  color: #959BA3;
+
+  .ant-progress-text {
+    color: #959BA3;
+    font-size: 12px;
+  }
+}
+
+.indicator {
+  margin-left: 10px;
+}
+
+.board_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #DBEEFF;
+  border-radius: 26px;
+
+  width: 68px;
+  height: 48px;
+
+  h1 {
+    margin: 0;
+    font-size: 26px;
+  }
+}
+
+.complete {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.users {
+  .ant-avatar-group {
+    margin-inline-start: -11px;
+  }
+}
+
+.user_icon {
+  background-color: #B2BFFA;
+}
+
+.board_button {
+  background-color: #6E6AF0;
+  color: white;
+
+  margin-left: 20px;
+}
