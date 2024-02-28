@@ -6,26 +6,26 @@ import adminIcon from '../images/Frame 14.svg';
 
 const Header = () => {
     return (
-        <div>
-            <div>
+        <header className='header'>
+            <div className='header_search'>
                 <AutoComplete>
-                    <Input.Search placeholder="Search..." />
+                    <Input.Search placeholder="Search..." className={'search'}/>
                 </AutoComplete>
             </div>
 
-            <div>
+            <div className='header_user'>
                 <img src={mail} alt=""/>
                 <img src={notification} alt=""/>
 
-                <div>
+                <div className='user_account'>
                     <img src={adminIcon} alt=""/>
-                    <div>
+                    <div className='username'>
                         <p>Alexandra C.</p>
                         <p>Admin</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }
 
