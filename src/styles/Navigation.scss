@@ -1,0 +1,42 @@
+$background-nav: #EEF1FF;
+
+.navigation_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 8px;
+
+  > img {
+    margin-bottom: 27px;
+  }
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  :where(.css-dev-only-do-not-override-1k979oh).ant-menu-light.ant-menu-root.ant-menu-vertical {
+    border-inline-end: none;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+
+  height: 49px;
+  width: 49px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.current {
+  background-color: $background-nav;
+}
+
+.logo {
+  padding: 8px;
+}

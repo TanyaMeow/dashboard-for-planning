@@ -2,3 +2,20 @@
 @import "Navigation";
 @import "SettingBoard";
 @import "UserTable";
+
+html, body, #root, .App {
+  height: 100%;
+}
+
+body {
+  margin: 0 auto;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+}
+
+.content_block {
+  width: 100%;
+}

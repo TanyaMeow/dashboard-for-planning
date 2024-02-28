@@ -11,19 +11,33 @@ import remove from '../images/remove.svg';
 
 const Navigation = () => {
     return (
-        <div>
-            <img src={logo} alt=""/>
+        <div className='navigation_block'>
+            <div className='navigation_container'>
+                <img className='logo' src={logo} alt=""/>
 
-            <nav className='navigation'>
-                <Menu>
-                    <img src={layoutBlock} alt=""/>
-                    <img src={layout} alt=""/>
-                    <img src={document} alt=''/>
-                    <img src={commercial} alt=""/>
-                    <img src={chat} alt=""/>
-                    <img src={dark_theme} alt=""/>
-                </Menu>
-            </nav>
+                <nav className='navigation'>
+                    <Menu className={'navigation'}>
+                        <div className='nav'>
+                            <img src={layoutBlock} alt=""/>
+                        </div>
+                        <div className='nav current'>
+                            <img src={layout} alt=""/>
+                        </div>
+                        <div className='nav'>
+                            <img  src={document} alt=''/>
+                        </div>
+                        <div className='nav'>
+                            <img  src={commercial} alt=""/>
+                        </div>
+                        <div className='nav'>
+                            <img  src={chat} alt=""/>
+                        </div>
+                        <div className='nav'>
+                            <img  src={dark_theme} alt=""/>
+                        </div>
+                    </Menu>
+                </nav>
+            </div>
 
             <img src={remove} alt=""/>
         </div>
