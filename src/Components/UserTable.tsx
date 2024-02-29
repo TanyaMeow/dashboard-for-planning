@@ -1,4 +1,11 @@
-import {Table} from "antd";
+import {Button, Space, Table} from "antd";
+import {DeleteTwoTone, EditTwoTone} from '@ant-design/icons'
+
+import {useGetUsersQuery, useUpdateUserMutation} from "../store/services/users";
+
+const actionStyle = {
+    fontSize: '16px'
+}
 
 const columns = [
     {
@@ -31,24 +38,30 @@ const columns = [
         dataIndex: 'roles',
         key: 'roles'
     },
-];
-const data = [
     {
-        name: 'Tanya',
-        surname: 'Khonyakina',
-        dateOfBirth: '06/09/2002',
-        email: 'faafafa@email.com',
-        phone: "+79999999999",
-        roles: ['admin', ', user']
+        title: 'Action',
+        dataIndex: 'action',
+        key: 'action',
+        render: (_: any, record: any) => (
+            <Space size={"middle"}>
+                <DeleteTwoTone style={actionStyle}/>
+                <EditTwoTone style={actionStyle}/>
+            </Space>
+        )
     }
-]
+];
 
 const UserTable = () => {
+    const { data, error, isLoading } = useGetUsersQuery();
+
     return (
         <div className='table_block'>
+            <div className='button_add-block'>
+                <Button >Add user</Button>
+            </div>
             <Table
-                columns={columns}
                 dataSource={data}
+                columns={columns}
             />
         </div>
     )
