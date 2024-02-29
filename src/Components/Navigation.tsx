@@ -20,7 +20,7 @@ const Navigation = () => {
                         <div className='nav'>
                             <img src={layoutBlock} alt=""/>
                         </div>
-                        <div className='nav current'>
+                        <div className='nav'>
                             <img src={layout} alt=""/>
                         </div>
                         <div className='nav'>
