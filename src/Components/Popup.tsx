@@ -1,7 +1,4 @@
-import {Controller, useForm} from "react-hook-form";
-
-import {Button, Input, Select} from "antd";
-import {DatePicker} from "antd/lib";
+import {useForm} from "react-hook-form";
 
 import { CloseOutlined } from '@ant-design/icons';
 import Form from "./Form";
