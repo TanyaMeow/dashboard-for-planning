@@ -31,6 +31,16 @@ const columns = [
         dataIndex: 'roles',
         key: 'roles'
     },
+];
+const data = [
+    {
+        name: 'Tanya',
+        surname: 'Khonyakina',
+        dateOfBirth: '06/09/2002',
+        email: 'faafafa@email.com',
+        phone: "+79999999999",
+        roles: ['admin', ', user']
+    }
 ]
 
 const UserTable = () => {
@@ -38,6 +48,7 @@ const UserTable = () => {
         <div className='table_block'>
             <Table
                 columns={columns}
+                dataSource={data}
             />
         </div>
     )
