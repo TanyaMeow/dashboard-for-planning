@@ -1,0 +1,47 @@
+{
+  "users": [
+    {
+      "id": "thfhdj839jkdsj",
+      "name": "Tanya",
+      "surname": "Khonyakina",
+      "dateOfBirth": "06/09/2002",
+      "email": "faafafa@email.com",
+      "phone": "+79999999999",
+      "roles": "admin"
+    },
+    {
+      "id": "thfhdj839jkdsj",
+      "name": "Tanya",
+      "surname": "Khonyakina",
+      "dateOfBirth": "06/05/2002",
+      "email": "faafafa@email.com",
+      "phone": "+79999999999",
+      "roles": "admin"
+    },
+    {
+      "id": "thfhdj839jkdsj",
+      "name": "Tanya",
+      "surname": "Khonyakina",
+      "dateOfBirth": "03/09/2002",
+      "email": "faafafa@email.com",
+      "phone": "+79999999999",
+      "roles": "admin"
+    },
+    {
+      "name": "Tanya",
+      "surname": "Khonyakina",
+      "dateOfBirth": "06/09/2002",
+      "email": "faafafa@email.com",
+      "phone": "+79999999999",
+      "roles": "admin"
+    },
+    {
+      "name": "Tanya",
+      "surname": "Khonyakina",
+      "dateOfBirth": "06/09/2002",
+      "email": "faafafa@email.com",
+      "phone": "+79999999999",
+      "roles": "admin"
+    }
+  ]
+}
