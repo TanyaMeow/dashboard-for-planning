@@ -2,16 +2,14 @@ import {useForm} from "react-hook-form";
 
 import { CloseOutlined } from '@ant-design/icons';
 import Form from "./Form";
-import {useUpdateUserMutation} from "../store/services/users";
-import {UserInterface} from "../Interface/UserInterface";
+import {useAddUserMutation, useUpdateUserMutation} from "../store/services/users";
+import { UserInterface } from "../Interface/UserInterface";
 
-interface FormData {
-    name: string,
-    surname: string,
-    dateOfBirth: string,
-    email: string,
-    phone: string,
-    roles: string
+interface PopupProps {
+    action: string,
+    id: string,
+    onClose: (state: boolean) => any,
+    user: UserInterface
 }
 
 const SVGStyle = {
@@ -32,11 +30,11 @@ const optionsSelect = [
         label: 'Manager'
     }
 ]
-
 const forms = [
     {
         name: 'name',
         formFieldType: 'input',
+        title: 'Name',
         props: {
             placeholder: 'Enter your name...'
         }
@@ -44,6 +42,7 @@ const forms = [
     {
         name: 'surname',
         formFieldType: 'input',
+        title: 'Surname',
         props: {
             placeholder: 'Enter your surname...'
         }
@@ -51,6 +50,7 @@ const forms = [
     {
         name: 'dateOfBirth',
         formFieldType: 'datePicker',
+        title: 'Date of birth',
         props: {
             format: 'DD/MM/YYYY'
         }
@@ -58,6 +58,7 @@ const forms = [
     {
         name: 'email',
         formFieldType: 'input',
+        title: 'Email',
         props: {
             placeholder: 'Enter your email...'
         }
@@ -65,13 +66,12 @@ const forms = [
     {
         name: 'phone',
         formFieldType: 'input',
-        props: {
-            defaultValue: '+7'
-        }
+        title: 'Phone'
     },
     {
         name: 'roles',
         formFieldType: 'select',
+        title: 'Role',
         props: {
             placeholder: 'Select a role',
             options: optionsSelect
@@ -79,36 +79,50 @@ const forms = [
     }
 ]
 
-const Popup = () => {
-    const { control, handleSubmit } = useForm<FormData>()
-    const [updateUser, result] = useUpdateUserMutation();
+const Popup = ({action, id, onClose, user}: PopupProps) => {
+    const { control, handleSubmit } = useForm<UserInterface>();
 
-    // const updatedUser = (modifiedUser: UserInterface) => {
-    //     result.map((user: UserInterface): UserInterface => {
-    //         if (user.id === modifiedUser.id) {
-    //             return modifiedUser;
-    //         }
-    //         return user;
-    //     });
-    // }
+    const userInfo = Object.values(user);
 
-    const onSubmit = handleSubmit((data) => console.log(data));
+    const [addUser, resultAdd] = useAddUserMutation();
+    const [updateUser, resultUpdate] = useUpdateUserMutation();
+
+    const onSubmit = handleSubmit((data: UserInterface) => {
+        switch (action) {
+            case 'Add user':
+                data.id = crypto.randomUUID();
+                data.dateOfBirth = new Date(data.dateOfBirth)
+                    .toLocaleString("en-GB")
+                    .replace(', 00:00:00', '');
+
+                addUser(data);
+                break;
+            case 'Change user':
+                updateUser({id: userInfo[0], data: data});
+                break;
+        }
+
+        onClose(false);
+
+    });
 
     return (
         <div className='popup_block' >
             <div className='popup_container'>
-                <CloseOutlined style={SVGStyle}/>
+                <CloseOutlined onClick={() => onClose(false)} style={SVGStyle}/>
 
                 <form className='popup_field'  onSubmit={onSubmit}>
-                        {forms.map((form) => (
+                        {forms.map((form, index) => (
                             <Form
+                                defaultValue={userInfo[index + 1]}
+                                title={form.title}
                                 control={control}
                                 name={form.name}
                                 formFieldType={form.formFieldType}
                                 {...form.props}
                             />
                         ))}
-                        <button type='submit'>Добавить</button>
+                        <button type='submit'>{action}</button>
                 </form>
             </div>
         </div>

@@ -5,7 +5,9 @@ import {DatePicker} from "antd/lib";
 interface FormProps {
     formFieldType: string,
     control: any,
-    name: string
+    name: string,
+    title: string,
+    defaultValue: string
 }
 
 const fieldType = {
@@ -13,21 +15,26 @@ const fieldType = {
     input: Input,
     datePicker: DatePicker
 }
-const Form = ({ control, name, formFieldType, ...restProps }: FormProps) => {
+const Form = ({ title, control, name, formFieldType, defaultValue, ...restProps }: FormProps) => {
     // @ts-ignore
     const Component = fieldType[formFieldType];
 
     return (
-        <Controller
-            name={name}
-            control={control}
-            render={({field}) => (
-                <Component
-                    {...field}
-                    {...restProps}
-                />
-            )}
-        />
+        <div>
+            <p className='title_form'>{title}</p>
+
+            <Controller
+                name={name}
+                control={control}
+                render={({field}) => (
+                    <Component
+                        defaultValue={defaultValue ? defaultValue : ''}
+                        {...field}
+                        {...restProps}
+                    />
+                )}
+            />
+        </div>
     )
 }
 
