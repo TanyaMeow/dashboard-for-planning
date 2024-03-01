@@ -1,7 +1,7 @@
 import {Button, Space, Table} from "antd";
 import {DeleteTwoTone, EditTwoTone} from '@ant-design/icons'
 
-import {useGetUsersQuery, useUpdateUserMutation, useDeleteUserMutation} from "../store/services/users";
+import {useGetUsersQuery, useDeleteUserMutation} from "../store/services/users";
 import Popup from "./Popup";
 import {useState} from "react";
 import {UserInterface} from "../Interface/UserInterface";
@@ -14,7 +14,6 @@ const actionStyle = {
 const UserTable = () => {
     const [openPopup, setOpenPopup] = useState<boolean>(false);
     const [action, setAction] = useState('');
-    const [currentId, setCurrentId] = useState('');
     const [currentUser, setCurrentUser] = useState<UserInterface>({
         dateOfBirth: "",
         email: "",
@@ -28,18 +27,18 @@ const UserTable = () => {
     const { data, error, isLoading } = useGetUsersQuery();
     const [deleteUser, resultDelete] = useDeleteUserMutation();
 
-    const setPopupInfo = (id: string, action: string) => {
-        setCurrentId(id);
+    const setPopupInfo = (action: string) => {
         setAction(action);
 
         setOpenPopup(true)
     }
     const setUserInfo = (user: UserInterface, action: string) => {
         const date = dayjs(user.dateOfBirth, 'DD/MM/YYYY');
+
         // @ts-ignore
         setCurrentUser({...user, dateOfBirth: date});
 
-        setPopupInfo(user.id, action);
+        setPopupInfo(action);
     }
 
     const columns: any = [
@@ -98,14 +97,13 @@ const UserTable = () => {
                 <Popup
                     user={currentUser}
                     action={action}
-                    id={currentId}
                     onClose={(state: boolean) => setOpenPopup(state)}
                 />
             }
 
             <div className='button_add-block'>
                 <Button onClick={() => {
-                    setPopupInfo('', 'Add user')
+                    setPopupInfo('Add user')
                     setCurrentUser({
                         dateOfBirth: "",
                         email: "",

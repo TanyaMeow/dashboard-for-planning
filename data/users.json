@@ -2,11 +2,11 @@
   "users": [
     {
       "id": "8b91df6b-7f1a-4de3-9a72-eea043a19aa9",
-      "name": "Ken",
-      "surname": "Stanley",
-      "dateOfBirth": "04/12/2000",
+      "name": "Kenny",
+      "surname": "McCormick",
+      "dateOfBirth": "04/03/2024",
       "email": "ken.stanley@email.com",
-      "phone": "+7909-688-20-88",
+      "phone": "+79096882088",
       "roles": "admin"
     },
     {
@@ -15,17 +15,35 @@
       "surname": "Palmer",
       "dateOfBirth": "03/02/1992",
       "email": "krin.palmer@email.com",
-      "phone": "+7999-350-85-21",
+      "phone": "+79993508521",
       "roles": "user"
     },
     {
       "id": "63255838-e919-4151-9267-7d61336f59c7",
       "name": "Felicia",
       "surname": "Morrison",
-      "dateOfBirth": "02/11/1984",
+      "dateOfBirth": "19/03/1996",
       "email": "felicia.morrison@email.com",
-      "phone": "+7999-248-38-25",
+      "phone": "+79992483825",
       "roles": "user"
+    },
+    {
+      "id": "c9e8bb7e-4e78-436f-884f-f4a5433b1456",
+      "name": "Adam",
+      "surname": "Stan",
+      "dateOfBirth": "10/03/2004",
+      "email": "kikadmin@email.com",
+      "phone": "+79998508734",
+      "roles": "manager"
+    },
+    {
+      "id": "d9f4340a-f75e-4cda-9018-54ef6019fb07",
+      "name": "Eric",
+      "surname": "Cartman",
+      "dateOfBirth": "16/03/2010",
+      "email": "annnclark@email.com",
+      "phone": "+7949949494",
+      "roles": "admin"
     }
   ]
 }

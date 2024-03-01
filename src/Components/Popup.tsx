@@ -7,7 +7,6 @@ import { UserInterface } from "../Interface/UserInterface";
 
 interface PopupProps {
     action: string,
-    id: string,
     onClose: (state: boolean) => any,
     user: UserInterface
 }
@@ -79,7 +78,7 @@ const forms = [
     }
 ]
 
-const Popup = ({action, id, onClose, user}: PopupProps) => {
+const Popup = ({action, onClose, user}: PopupProps) => {
     const { control, handleSubmit } = useForm<UserInterface>();
 
     const userInfo = Object.values(user);
@@ -98,12 +97,15 @@ const Popup = ({action, id, onClose, user}: PopupProps) => {
                 addUser(data);
                 break;
             case 'Change user':
+                data.dateOfBirth = new Date(data.dateOfBirth)
+                    .toLocaleString("en-GB")
+                    .replace(', 00:00:00', '');
+
                 updateUser({id: userInfo[0], data: data});
                 break;
         }
 
         onClose(false);
-
     });
 
     return (
