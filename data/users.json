@@ -1,47 +1,31 @@
 {
   "users": [
     {
-      "id": "thfhdj839jkdsj",
-      "name": "Tanya",
-      "surname": "Khonyakina",
-      "dateOfBirth": "06/09/2002",
-      "email": "faafafa@email.com",
-      "phone": "+79999999999",
+      "id": "8b91df6b-7f1a-4de3-9a72-eea043a19aa9",
+      "name": "Ken",
+      "surname": "Stanley",
+      "dateOfBirth": "04/12/2000",
+      "email": "ken.stanley@email.com",
+      "phone": "+7909-688-20-88",
       "roles": "admin"
     },
     {
-      "id": "thfhdj839jkdsj",
-      "name": "Tanya",
-      "surname": "Khonyakina",
-      "dateOfBirth": "06/05/2002",
-      "email": "faafafa@email.com",
-      "phone": "+79999999999",
-      "roles": "admin"
+      "id": "b6a6a76b-25c0-44e7-b099-01f5db1aef36",
+      "name": "Krin",
+      "surname": "Palmer",
+      "dateOfBirth": "03/02/1992",
+      "email": "krin.palmer@email.com",
+      "phone": "+7999-350-85-21",
+      "roles": "user"
     },
     {
-      "id": "thfhdj839jkdsj",
-      "name": "Tanya",
-      "surname": "Khonyakina",
-      "dateOfBirth": "03/09/2002",
-      "email": "faafafa@email.com",
-      "phone": "+79999999999",
-      "roles": "admin"
-    },
-    {
-      "name": "Tanya",
-      "surname": "Khonyakina",
-      "dateOfBirth": "06/09/2002",
-      "email": "faafafa@email.com",
-      "phone": "+79999999999",
-      "roles": "admin"
-    },
-    {
-      "name": "Tanya",
-      "surname": "Khonyakina",
-      "dateOfBirth": "06/09/2002",
-      "email": "faafafa@email.com",
-      "phone": "+79999999999",
-      "roles": "admin"
+      "id": "63255838-e919-4151-9267-7d61336f59c7",
+      "name": "Felicia",
+      "surname": "Morrison",
+      "dateOfBirth": "02/11/1984",
+      "email": "felicia.morrison@email.com",
+      "phone": "+7999-248-38-25",
+      "roles": "user"
     }
   ]
 }
