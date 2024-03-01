@@ -1,4 +1,6 @@
 .popup_block {
+  left: 0;
+  top: 0;
   position: absolute;
   z-index: 2;
 
@@ -9,7 +11,7 @@
   width: 100%;
   height: 100%;
 
-  background-color: #5e5cab4a;
+  background-color: rgba(94, 92, 171, 0.2901960784);
 }
 
 .popup_container {
@@ -27,14 +29,34 @@
 }
 
 .popup_field {
-  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+
+  padding: 25px 40px;
 
   border-radius: 5px;
   background-color: #6e6af0;
 
+  .ant-select-selector {
+    width: 200px!important;
+    margin-bottom: 10px;
+    margin-left: 5px;
+  }
+
+  .ant-picker {
+    width: 200px!important;
+    margin-bottom: 10px;
+    margin-left: 5px;
+
+    input {
+      margin: 0;
+    }
+  }
+
   input {
     width: 200px;
-    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
   }
 
   button {
@@ -65,4 +87,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.title_form {
+  color: white;
+  font-size: 14px;
+  margin: 0;
 }
