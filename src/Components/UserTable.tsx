@@ -1,12 +1,17 @@
-import {Button, Space, Table} from "antd";
-import {DeleteTwoTone, EditTwoTone} from '@ant-design/icons';
+import React, { useState } from "react";
+
+import { Button, Space, Table } from "antd";
+import { DeleteTwoTone, EditTwoTone, CaretDownOutlined } from '@ant-design/icons';
+
+import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-import {useDeleteUserMutation, useGetUsersQuery} from "../store/services/users";
+import {useDeleteUserMutation, useGetUsersQuery, useSortUsersQuery} from "../store/services/users";
+
 import Popup from "./Popup";
-import {useState} from "react";
-import {UserInterface} from "../Interface/UserInterface";
-import dayjs from "dayjs";
+
+import { UserInterface } from "../Interface/UserInterface";
+import {ColumnsType} from "antd/es/table";
 
 dayjs.extend(relativeTime);
 
@@ -15,62 +20,62 @@ const actionStyle = {
 }
 
 const getAge = (birthDateString: string): number => {
-    const date = dayjs(birthDateString);
-    const birth = dayjs(date).format('YYYY-MM-DD');
+    const date: dayjs.Dayjs = dayjs(birthDateString);
+    const birth: string = dayjs(date).format('YYYY-MM-DD');
 
     return parseInt(dayjs(birth).fromNow(true));
 }
 
 const UserTable = () => {
     const [openPopup, setOpenPopup] = useState<boolean>(false);
-    const [action, setAction] = useState('');
+    const [action, setAction] = useState<string>('');
     const [currentUser, setCurrentUser] = useState<UserInterface>({
-        dateOfBirth: "",
-        email: "",
-        id: "",
-        name: "",
-        phone: "",
-        roles: "",
-        surname: ""
+        id: '',
+        name: '',
+        surname: '',
+        dateOfBirth: '',
+        email: '',
+        phone: '+7',
+        roles: ''
     });
 
     const { data, error, isLoading } = useGetUsersQuery();
+
     const [deleteUser, resultDelete] = useDeleteUserMutation();
 
-    const setPopupInfo = (action: string) => {
+    const setPopupInfo = (action: string): void => {
         setAction(action);
 
-        setOpenPopup(true)
+        setOpenPopup(true);
     }
-    const setUserInfo = (user: UserInterface, action: string) => {
-        const date = dayjs(user.dateOfBirth);
+    const setUserInfo = (user: UserInterface, action: string): void => {
+        const date: dayjs.Dayjs = dayjs(user.dateOfBirth);
 
-        // @ts-ignore
         setCurrentUser({...user, dateOfBirth: date});
 
         setPopupInfo(action);
     }
 
-    const columns: any = [
+    const columns: ColumnsType<UserInterface> = [
         {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            sorter: (a: UserInterface, b: UserInterface) => a.name.length - b.name.length,
+            sorter: (a: UserInterface, b: UserInterface): number => a.name.length - b.name.length,
         },
         {
             title: 'Surname',
             dataIndex: 'surname',
             key: 'surname',
-            sorter: (a: UserInterface, b: UserInterface) => a.surname.length - b.surname.length,
+            sorter: (a: UserInterface, b: UserInterface): number => a.surname.length - b.surname.length,
         },
         {
             title: 'Date of birth',
             dataIndex: 'dateOfBirth',
             key: 'dateOfBirth',
-            sorter: (a: UserInterface, b: UserInterface) => {
-                const aAge = getAge(a.dateOfBirth);
-                const bAge = getAge(b.dateOfBirth);
+            sorter: (a: UserInterface, b: UserInterface): number => {
+                const aAge: number = getAge(a.dateOfBirth as string);
+                const bAge: number = getAge(b.dateOfBirth as string);
 
                 return aAge - bAge;
             }
@@ -79,7 +84,7 @@ const UserTable = () => {
             title: 'Email',
             dataIndex: 'email',
             key: 'email',
-            sorter: (a: UserInterface, b: UserInterface) => a.email.length - b.email.length,
+            sorter: (a: UserInterface, b: UserInterface): number => a.email.length - b.email.length,
         },
         {
             title: 'Phone',
@@ -104,7 +109,7 @@ const UserTable = () => {
                     value: 'user',
                 }
             ],
-            onFilter: (value: string, record: UserInterface) => record.roles.indexOf(value) === 0,
+            onFilter: (value: boolean | React.Key, record: UserInterface): boolean => record.roles.indexOf(value as string) === 0,
         },
         {
             title: 'Action',
@@ -136,16 +141,16 @@ const UserTable = () => {
             }
 
             <div className='button_add-block'>
-                <Button onClick={() => {
+                <Button onClick={(): void => {
                     setPopupInfo('Add user')
                     setCurrentUser({
-                        dateOfBirth: "",
-                        email: "",
-                        id: "",
-                        name: "",
-                        phone: "",
-                        roles: "",
-                        surname: ""
+                        id: '',
+                        name: '',
+                        surname: '',
+                        dateOfBirth: '',
+                        email: '',
+                        phone: '+7',
+                        roles: ''
                     });
                 }}>Add user</Button>
             </div>
