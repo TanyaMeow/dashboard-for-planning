@@ -1,5 +1,7 @@
 import {  AutoComplete, Input  } from 'antd';
 
+import {SearchOutlined} from '@ant-design/icons';
+
 import mail from '../images/mail.svg';
 import notification from '../images/notification.svg';
 import adminIcon from '../images/Frame 14.svg';
@@ -9,7 +11,7 @@ const Header = () => {
         <header className='header'>
             <div className='header_search'>
                 <AutoComplete>
-                    <Input.Search placeholder="Search..." className={'search'}/>
+                    <Input addonBefore={<SearchOutlined />} placeholder="Search..." className={'search'}/>
                 </AutoComplete>
             </div>
 
