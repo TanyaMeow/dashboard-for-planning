@@ -11,9 +11,6 @@ export const usersApi = createApi({
             query: () => 'users',
             providesTags: ['Users']
         }),
-        getUser: builder.query<UserInterface, void>({
-            query: (id) => `users/${id}`
-        }),
         updateUser: builder.mutation({
             query: ({id, data}) => (
                 {
@@ -48,7 +45,6 @@ export const usersApi = createApi({
 
 export const {
     useGetUsersQuery,
-    useGetUserQuery,
     useUpdateUserMutation,
     useAddUserMutation,
     useDeleteUserMutation
