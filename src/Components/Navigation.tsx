@@ -1,4 +1,4 @@
-import {Menu} from "antd";
+import { Menu } from "antd";
 
 import logo from '../images/logo.svg';
 import layoutBlock from '../images/layout-block.svg';

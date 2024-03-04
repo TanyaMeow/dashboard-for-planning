@@ -1,4 +1,4 @@
-import {NavLink, Route, Routes} from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 
 import Description from "./Description";
 import Board from "./Board";

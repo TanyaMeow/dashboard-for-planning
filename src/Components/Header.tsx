@@ -1,6 +1,6 @@
 import {  AutoComplete, Input  } from 'antd';
 
-import {SearchOutlined} from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
 
 import mail from '../images/mail.svg';
 import notification from '../images/notification.svg';

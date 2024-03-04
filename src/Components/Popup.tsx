@@ -1,16 +1,18 @@
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 
-import {CloseOutlined} from '@ant-design/icons';
+import dayjs from "dayjs";
+
+import { Button } from 'antd'
+import { CloseOutlined } from '@ant-design/icons';
+
 import FormField from "./FormField";
 
 import { useAddUserMutation, useUpdateUserMutation} from "../store/services/users";
-import {UserInterface} from "../Interface/UserInterface";
-import dayjs from "dayjs";
-import {Button} from "antd";
+import { UserInterface } from "../Interface/UserInterface";
 
 interface PopupProps {
     action: string,
-    onClose: (state: boolean) => any,
+    onClose: (state: boolean) => void,
     user: UserInterface
 }
 
@@ -18,7 +20,7 @@ const SVGStyle = {
     color: '#1f0067',
     fontSize: '20px'
 };
-const optionsSelect = [
+const optionsSelect: Record<string, string>[] = [
     {
         value: 'user',
         label: 'User'
@@ -100,7 +102,15 @@ const forms = [
         formFieldType: 'input',
         title: 'Phone',
         props: {
-            placeholder: '+7'
+            type: "tel"
+        },
+        propsItem: {
+            rules: [
+                {
+                    type: 'tel',
+                    message: 'The input is not valid phone!',
+                }
+            ]
         }
     },
     {
@@ -117,23 +127,25 @@ const forms = [
 const Popup = ({action, onClose, user}: PopupProps) => {
     const {control, handleSubmit} = useForm<UserInterface>();
 
-    const userInfo = Object.values(user);
+    const userInfo: string[] = Object.values(user);
 
     const [addUser, resultAdd] = useAddUserMutation();
     const [updateUser, resultUpdate] = useUpdateUserMutation();
 
-    const onSubmit = handleSubmit((data: UserInterface) => {
+    const onSubmit = handleSubmit((data: UserInterface): void => {
         switch (action) {
             case 'Add user':
                 data.id = crypto.randomUUID();
-                data.dateOfBirth = dayjs(data.dateOfBirth).format('DD/MM/YYYY');
+                data.dateOfBirth = dayjs(data.dateOfBirth).format('YYYY-MM-DD');
 
                 addUser(data);
+
                 break;
             case 'Change user':
-                data.dateOfBirth = dayjs(data.dateOfBirth).format('DD/MM/YYYY');
+                data.dateOfBirth = dayjs(data.dateOfBirth).format('YYYY-MM-DD');
 
                 updateUser({id: userInfo[0], data: data});
+
                 break;
         }
 
@@ -146,7 +158,7 @@ const Popup = ({action, onClose, user}: PopupProps) => {
                 <CloseOutlined onClick={() => onClose(false)} style={SVGStyle}/>
 
                 <form className='popup_field' onSubmit={onSubmit}>
-                    {forms.map((form, index) => (
+                    {forms.map((form, index: number) => (
                         <FormField
                             title={form.title}
                             control={control}
@@ -154,6 +166,7 @@ const Popup = ({action, onClose, user}: PopupProps) => {
                             formFieldType={form.formFieldType}
                             defaultValue={userInfo[index + 1]}
                             propsItem={form.propsItem}
+
                             {...form.props}
                         />
                     ))}

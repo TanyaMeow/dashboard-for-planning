@@ -1,5 +1,3 @@
-import Popup from "./Popup";
-
 const Board = () => {
     return (
         <div>
