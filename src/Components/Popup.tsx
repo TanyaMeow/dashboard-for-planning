@@ -136,13 +136,13 @@ const Popup = ({action, onClose, user}: PopupProps) => {
         switch (action) {
             case 'Add user':
                 data.id = crypto.randomUUID();
-                data.dateOfBirth = dayjs(data.dateOfBirth).format('YYYY-MM-DD');
+                data.dateOfBirth = dayjs(data.dateOfBirth).format('YYYY/MM/DD');
 
                 addUser(data);
 
                 break;
             case 'Change user':
-                data.dateOfBirth = dayjs(data.dateOfBirth).format('YYYY-MM-DD');
+                data.dateOfBirth = dayjs(data.dateOfBirth).format('YYYY/MM/DD');
 
                 updateUser({id: userInfo[0], data: data});
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Button, Space, Table } from "antd";
-import { DeleteTwoTone, EditTwoTone, CaretDownOutlined } from '@ant-design/icons';
+import { DeleteTwoTone, EditTwoTone } from '@ant-design/icons';
 
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -11,19 +11,13 @@ import {useDeleteUserMutation, useGetUsersQuery, useSortUsersQuery} from "../sto
 import Popup from "./Popup";
 
 import { UserInterface } from "../Interface/UserInterface";
-import {ColumnsType} from "antd/es/table";
+import { ColumnsType } from "antd/es/table";
+import {ColumnType} from "antd/es/table/interface";
 
 dayjs.extend(relativeTime);
 
 const actionStyle = {
     fontSize: '16px'
-}
-
-const getAge = (birthDateString: string): number => {
-    const date: dayjs.Dayjs = dayjs(birthDateString);
-    const birth: string = dayjs(date).format('YYYY-MM-DD');
-
-    return parseInt(dayjs(birth).fromNow(true));
 }
 
 const UserTable = () => {
@@ -39,7 +33,8 @@ const UserTable = () => {
         roles: ''
     });
 
-    const { data, error, isLoading } = useGetUsersQuery();
+    const [order, setOrder] = useState<string>('');
+    const { data, error, isLoading } = useSortUsersQuery({ order: order });
 
     const [deleteUser, resultDelete] = useDeleteUserMutation();
 
@@ -56,40 +51,48 @@ const UserTable = () => {
         setPopupInfo(action);
     }
 
-    const columns: ColumnsType<UserInterface> = [
+    const sorterFn = (sortOrder: string): void => {
+        setOrder(sortOrder);
+
+        if (order === sortOrder) {
+            setOrder('-' + sortOrder)
+        }
+    }
+
+    type Test1<T> = Omit<ColumnType<T>, 'sorter'>
+
+    type Test2<T> = Test1<T> & { sorter?: () => void }
+
+    const columns: Test2<UserInterface>[] = [
         {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            sorter: (a: UserInterface, b: UserInterface): number => a.name.length - b.name.length,
+            sorter: () => sorterFn('name'),
         },
         {
             title: 'Surname',
             dataIndex: 'surname',
             key: 'surname',
-            sorter: (a: UserInterface, b: UserInterface): number => a.surname.length - b.surname.length,
+            sorter: () => sorterFn('surname')
         },
         {
             title: 'Date of birth',
             dataIndex: 'dateOfBirth',
             key: 'dateOfBirth',
-            sorter: (a: UserInterface, b: UserInterface): number => {
-                const aAge: number = getAge(a.dateOfBirth as string);
-                const bAge: number = getAge(b.dateOfBirth as string);
-
-                return aAge - bAge;
-            }
+            sorter: () => sorterFn('dateOfBirth')
         },
         {
             title: 'Email',
             dataIndex: 'email',
             key: 'email',
-            sorter: (a: UserInterface, b: UserInterface): number => a.email.length - b.email.length,
+            sorter: () => sorterFn('email')
         },
         {
             title: 'Phone',
             dataIndex: 'phone',
-            key: 'phone'
+            key: 'phone',
+            sorter: () => sorterFn('phone')
         },
         {
             title: 'Roles',
@@ -157,7 +160,7 @@ const UserTable = () => {
             <Table
                 size={"middle"}
                 dataSource={data}
-                columns={columns}
+                columns={columns as ColumnsType<UserInterface>}
             />
         </div>
     )

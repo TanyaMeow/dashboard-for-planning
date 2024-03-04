@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import type { UserInterface } from "../../Interface/UserInterface";
 
@@ -8,11 +8,15 @@ export const usersApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3001/'}),
     endpoints: (builder) => ({
         getUsers: builder.query<UserInterface[], void>({
-            query: () => 'users',
+            query: (): string | FetchArgs => 'users',
+            providesTags: ['Users']
+        }),
+        sortUsers: builder.query({
+            query: ({ order }) => ({ url: `users?_sort=${order}` }),
             providesTags: ['Users']
         }),
         updateUser: builder.mutation({
-            query: ({id, data}) => (
+            query: ({id, data}): string | FetchArgs => (
                 {
                     url: `users/${id}`,
                     method: 'PATCH',
@@ -22,7 +26,7 @@ export const usersApi = createApi({
             invalidatesTags: ['Users']
         }),
         addUser: builder.mutation({
-            query: (data) => (
+            query: (data): string | FetchArgs => (
                 {
                     url: `users`,
                     method: 'POST',
@@ -32,7 +36,7 @@ export const usersApi = createApi({
             invalidatesTags: ['Users']
         }),
         deleteUser: builder.mutation({
-            query: ({ id }) => (
+            query: ({ id }): string | FetchArgs => (
                 {
                     url: `users/${id}`,
                     method: 'DELETE'
@@ -45,6 +49,7 @@ export const usersApi = createApi({
 
 export const {
     useGetUsersQuery,
+    useSortUsersQuery,
     useUpdateUserMutation,
     useAddUserMutation,
     useDeleteUserMutation

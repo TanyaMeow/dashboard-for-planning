@@ -1,4 +1,3 @@
-
 const Notes = () => {
     return (
         <div>
