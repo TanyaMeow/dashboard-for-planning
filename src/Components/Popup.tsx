@@ -1,9 +1,12 @@
 import {useForm} from "react-hook-form";
 
-import { CloseOutlined } from '@ant-design/icons';
-import Form from "./Form";
-import {useAddUserMutation, useUpdateUserMutation} from "../store/services/users";
-import { UserInterface } from "../Interface/UserInterface";
+import {CloseOutlined} from '@ant-design/icons';
+import FormField from "./FormField";
+
+import { useAddUserMutation, useUpdateUserMutation} from "../store/services/users";
+import {UserInterface} from "../Interface/UserInterface";
+import dayjs from "dayjs";
+import {Button} from "antd";
 
 interface PopupProps {
     action: string,
@@ -36,6 +39,15 @@ const forms = [
         title: 'Name',
         props: {
             placeholder: 'Enter your name...'
+        },
+        propsItem: {
+            rules: [
+                {
+                    required: true,
+                    message: 'Please input your name!',
+                    whitespace: true,
+                },
+            ]
         }
     },
     {
@@ -44,6 +56,15 @@ const forms = [
         title: 'Surname',
         props: {
             placeholder: 'Enter your surname...'
+        },
+        propsItem: {
+            rules: [
+                {
+                    required: true,
+                    message: 'Please input your surname!',
+                    whitespace: true,
+                },
+            ]
         }
     },
     {
@@ -59,13 +80,28 @@ const forms = [
         formFieldType: 'input',
         title: 'Email',
         props: {
-            placeholder: 'Enter your email...'
+            placeholder: 'Enter your email...',
+        },
+        propsItem: {
+            rules: [
+                {
+                    type: 'email',
+                    message: 'The input is not valid E-mail!',
+                },
+                {
+                    required: true,
+                    message: 'Please input your E-mail!',
+                },
+            ]
         }
     },
     {
         name: 'phone',
         formFieldType: 'input',
-        title: 'Phone'
+        title: 'Phone',
+        props: {
+            placeholder: '+7'
+        }
     },
     {
         name: 'roles',
@@ -76,10 +112,10 @@ const forms = [
             options: optionsSelect
         }
     }
-]
+];
 
 const Popup = ({action, onClose, user}: PopupProps) => {
-    const { control, handleSubmit } = useForm<UserInterface>();
+    const {control, handleSubmit} = useForm<UserInterface>();
 
     const userInfo = Object.values(user);
 
@@ -90,16 +126,12 @@ const Popup = ({action, onClose, user}: PopupProps) => {
         switch (action) {
             case 'Add user':
                 data.id = crypto.randomUUID();
-                data.dateOfBirth = new Date(data.dateOfBirth)
-                    .toLocaleString("en-GB")
-                    .replace(', 00:00:00', '');
+                data.dateOfBirth = dayjs(data.dateOfBirth).format('DD/MM/YYYY');
 
                 addUser(data);
                 break;
             case 'Change user':
-                data.dateOfBirth = new Date(data.dateOfBirth)
-                    .toLocaleString("en-GB")
-                    .replace(', 00:00:00', '');
+                data.dateOfBirth = dayjs(data.dateOfBirth).format('DD/MM/YYYY');
 
                 updateUser({id: userInfo[0], data: data});
                 break;
@@ -109,22 +141,25 @@ const Popup = ({action, onClose, user}: PopupProps) => {
     });
 
     return (
-        <div className='popup_block' >
+        <div className='popup_block'>
             <div className='popup_container'>
                 <CloseOutlined onClick={() => onClose(false)} style={SVGStyle}/>
 
-                <form className='popup_field'  onSubmit={onSubmit}>
-                        {forms.map((form, index) => (
-                            <Form
-                                defaultValue={userInfo[index + 1]}
-                                title={form.title}
-                                control={control}
-                                name={form.name}
-                                formFieldType={form.formFieldType}
-                                {...form.props}
-                            />
-                        ))}
-                        <button type='submit'>{action}</button>
+                <form className='popup_field' onSubmit={onSubmit}>
+                    {forms.map((form, index) => (
+                        <FormField
+                            title={form.title}
+                            control={control}
+                            name={form.name}
+                            formFieldType={form.formFieldType}
+                            defaultValue={userInfo[index + 1]}
+                            propsItem={form.propsItem}
+                            {...form.props}
+                        />
+                    ))}
+                    <Button type='primary' htmlType={"submit"}>
+                        {action}
+                    </Button>
                 </form>
             </div>
         </div>
