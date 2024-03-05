@@ -28,8 +28,12 @@ const SettingBoard = () => {
                 <div className='users_board'>
                     <div className='users'>
                         <Avatar.Group>
-                            {usersAvatar.map((avatar: string) => (
-                                <Avatar className='user_icon' src={avatar}/>
+                            {usersAvatar.map((avatar: string, index: number) => (
+                                <Avatar
+                                    className='user_icon'
+                                    key={index}
+                                    src={avatar}
+                                />
                             ))}
                             <Avatar className='user_icon'>+1</Avatar>
                         </Avatar.Group>

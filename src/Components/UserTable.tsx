@@ -6,13 +6,13 @@ import { DeleteTwoTone, EditTwoTone } from '@ant-design/icons';
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-import {useDeleteUserMutation, useGetUsersQuery, useSortUsersQuery} from "../store/services/users";
+import { useDeleteUserMutation, useSortUsersQuery } from "../store/services/users";
 
 import Popup from "./Popup";
 
 import { UserInterface } from "../Interface/UserInterface";
 import { ColumnsType } from "antd/es/table";
-import {ColumnType} from "antd/es/table/interface";
+import { CustomColumnsType } from "../Interface/types/CustomColumnType";
 
 dayjs.extend(relativeTime);
 
@@ -59,11 +59,7 @@ const UserTable = () => {
         }
     }
 
-    type Test1<T> = Omit<ColumnType<T>, 'sorter'>
-
-    type Test2<T> = Test1<T> & { sorter?: () => void }
-
-    const columns: Test2<UserInterface>[] = [
+    const columns: CustomColumnsType<UserInterface>[] = [
         {
             title: 'Name',
             dataIndex: 'name',

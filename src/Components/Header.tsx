@@ -1,4 +1,4 @@
-import {  AutoComplete, Input  } from 'antd';
+import { AutoComplete, Input } from 'antd';
 
 import { SearchOutlined } from '@ant-design/icons';
 

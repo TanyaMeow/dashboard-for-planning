@@ -4,7 +4,7 @@
       "id": "8b91df6b-7f1a-4de3-9a72-eea043a19aa9",
       "name": "Kenny",
       "surname": "McCormick",
-      "dateOfBirth": "04/03/2024",
+      "dateOfBirth": "2008/04/03",
       "email": "ken.stanley@email.com",
       "phone": "+79096882088",
       "roles": "admin"
@@ -13,7 +13,7 @@
       "id": "b6a6a76b-25c0-44e7-b099-01f5db1aef36",
       "name": "Krin",
       "surname": "Palmer",
-      "dateOfBirth": "03/02/1992",
+      "dateOfBirth": "1992/02/03",
       "email": "krin.palmer@email.com",
       "phone": "+79993508521",
       "roles": "user"
@@ -22,28 +22,28 @@
       "id": "63255838-e919-4151-9267-7d61336f59c7",
       "name": "Felicia",
       "surname": "Morrison",
-      "dateOfBirth": "19/03/1996",
+      "dateOfBirth": "1999/10/08",
       "email": "felicia.morrison@email.com",
       "phone": "+79992483825",
       "roles": "user"
     },
     {
-      "id": "c9e8bb7e-4e78-436f-884f-f4a5433b1456",
-      "name": "Adam",
-      "surname": "Stan",
-      "dateOfBirth": "10/03/2004",
-      "email": "kikadmin@email.com",
-      "phone": "+79998508734",
-      "roles": "manager"
-    },
-    {
       "id": "d9f4340a-f75e-4cda-9018-54ef6019fb07",
       "name": "Eric",
       "surname": "Cartman",
-      "dateOfBirth": "16/03/2010",
+      "dateOfBirth": "2004/01/06",
       "email": "annnclark@email.com",
       "phone": "+7949949494",
       "roles": "admin"
+    },
+    {
+      "id": "6f6f8b6c-48f5-4f3a-a4b5-6dbc4da1eb02",
+      "name": "Adam",
+      "surname": "Clark",
+      "dateOfBirth": "2004/03/04",
+      "email": "kikadmin@email.com",
+      "phone": "+79180479845",
+      "roles": "manager"
     }
   ]
 }

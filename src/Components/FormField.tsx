@@ -1,6 +1,6 @@
-import {Control, Controller, useForm} from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
 
-import {Input, Select, Form, FormInstance} from "antd";
+import { Input, Select, Form, FormInstance } from "antd";
 import { DatePicker } from "antd/lib";
 
 import { UserInterface } from "../Interface/UserInterface";
@@ -20,8 +20,9 @@ const fieldType = {
     datePicker: DatePicker
 }
 const FormField = ({ control, name, title, formFieldType, defaultValue, propsItem, ...restProps }: FormProps) => {
+    const [form] = Form.useForm<FormInstance>();
     // @ts-ignore
-    const {form} = useForm<FormInstance<any>>(), Component = fieldType[formFieldType];
+    const Component = fieldType[formFieldType];
 
     return (
             <Controller
