@@ -6,7 +6,7 @@ const Notes = () => {
 
     if (data === undefined) {
         return (
-            <div>Ошибочка</div>
+            <div>Упси, ошибочка</div>
         )
     }
 
