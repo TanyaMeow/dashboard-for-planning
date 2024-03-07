@@ -1,13 +1,13 @@
 import { NavLink, Route, Routes } from "react-router-dom";
 
-import Description from "./Description";
-import Board from "./Board";
-import Notes from "./Notes";
+import Description from "../Description";
+import Board from "../Board/Board";
+import Notes from "../Notes";
 import UserTable from "./UserTable";
 
-import reboot from '../images/reboot.svg';
-import increase from '../images/increase.svg';
-import setting from '../images/setting.svg';
+import reboot from '../../images/reboot.svg';
+import increase from '../../images/increase.svg';
+import setting from '../../images/setting.svg';
 
 const SelectionField = () => {
     return (

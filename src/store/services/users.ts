@@ -4,7 +4,7 @@ import type { UserInterface } from "../../Interface/UserInterface";
 
 export const usersApi = createApi({
     reducerPath: 'usersApi',
-    tagTypes: ['Users'],
+    tagTypes: ['Users', 'Posts'],
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3001/'}),
     endpoints: (builder) => ({
         getUsers: builder.query<UserInterface[], void>({

@@ -1,0 +1,31 @@
+.posts_block {
+  display: grid;
+  grid-auto-rows: minmax(400px, auto);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 15px;
+
+  padding: 20px;
+}
+
+.post {
+  padding: 10px;
+
+  background-color: #FFFFFF;
+  border-radius: 10px;
+
+  .post_title {
+    color: green;
+  }
+
+  .click {
+    color: red;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}

@@ -1,15 +1,13 @@
 import React from 'react';
 import './styles/Common.scss';
-import Header from "./Components/Header";
+import Header from "./Components/Header/Header";
 import Navigation from "./Components/Navigation";
-import SettingBoard from "./Components/SettingBoard";
-import Projects from "./Components/Projects";
+import SettingBoard from "./Components/Header/SettingBoard";
 
 function App() {
   return (
     <div className="App">
         <Navigation />
-        <Projects />
         <div className='content_block'>
             <Header />
             <SettingBoard />

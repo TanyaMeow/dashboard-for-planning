@@ -6,13 +6,13 @@ import { DeleteTwoTone, EditTwoTone } from '@ant-design/icons';
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-import { useDeleteUserMutation, useSortUsersQuery } from "../store/services/users";
+import { useDeleteUserMutation, useSortUsersQuery } from "../../store/services/users";
 
 import Popup from "./Popup";
 
-import { UserInterface } from "../Interface/UserInterface";
+import { UserInterface } from "../../Interface/UserInterface";
 import { ColumnsType } from "antd/es/table";
-import { CustomColumnsType } from "../Interface/types/CustomColumnType";
+import { CustomColumnsType } from "../../Interface/types/CustomColumnType";
 
 dayjs.extend(relativeTime);
 
@@ -154,7 +154,6 @@ const UserTable = () => {
                 }}>Add user</Button>
             </div>
             <Table
-                size={"middle"}
                 dataSource={data}
                 columns={columns as ColumnsType<UserInterface>}
             />

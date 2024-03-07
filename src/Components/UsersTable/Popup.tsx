@@ -5,10 +5,11 @@ import dayjs from "dayjs";
 import { Button } from 'antd'
 import { CloseOutlined } from '@ant-design/icons';
 
-import FormField from "./FormField";
 
-import { useAddUserMutation, useUpdateUserMutation} from "../store/services/users";
-import { UserInterface } from "../Interface/UserInterface";
+
+import { useAddUserMutation, useUpdateUserMutation} from "../../store/services/users";
+import { UserInterface } from "../../Interface/UserInterface";
+import FormField from "../FormField";
 
 interface PopupProps {
     action: string,

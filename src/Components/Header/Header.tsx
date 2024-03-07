@@ -2,9 +2,9 @@ import { AutoComplete, Input } from 'antd';
 
 import { SearchOutlined } from '@ant-design/icons';
 
-import mail from '../images/mail.svg';
-import notification from '../images/notification.svg';
-import adminIcon from '../images/Frame 14.svg';
+import mail from '../../images/mail.svg';
+import notification from '../../images/notification.svg';
+import adminIcon from '../../images/Frame 14.svg';
 
 const Header = () => {
     return (

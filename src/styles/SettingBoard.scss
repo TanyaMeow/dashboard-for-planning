@@ -48,6 +48,8 @@
 }
 
 .users {
+  display: flex;
+
   .ant-avatar-group {
     margin-inline-start: -11px;
   }
@@ -68,4 +70,22 @@
   display: flex;
   justify-content: flex-end;
   padding: 10px;
+}
+
+.board_block {
+  background-color: #FFF;
+  padding: 20px;
+}
+
+.user_account-address {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-left: 5px;
+}
+
+.address {
+  margin-right: 10px;
 }

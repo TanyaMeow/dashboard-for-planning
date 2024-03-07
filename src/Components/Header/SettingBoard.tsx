@@ -1,6 +1,6 @@
 import { Progress, Avatar, Button } from "antd";
 
-import SelectionField from "./SelectionField";
+import SelectionField from "../UsersTable/SelectionField";
 
 const usersAvatar: string[] = [
     'https://i.pinimg.com/736x/fe/ed/6d/feed6d83eafba8f1e29bc97ec17b9907.jpg',

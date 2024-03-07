@@ -8,7 +8,7 @@ import { UserInterface } from "../Interface/UserInterface";
 interface FormProps {
     title: string,
     formFieldType: string,
-    control: Control<UserInterface, any, UserInterface>,
+    control: Control<UserInterface, UserInterface>,
     name: any,
     defaultValue: string,
     propsItem: any
